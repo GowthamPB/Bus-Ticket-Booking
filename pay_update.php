@@ -1,4 +1,5 @@
 <?php
+$NOTIFICATION=false;
 include 'connect.php';
 $ID=$_GET['updateid'];
 $sql="SELECT * FROM `payment` WHERE `PAYMENT_ID`='$ID'";
@@ -22,7 +23,8 @@ if($result){
   header('location:pay_display.php');
 }
 else{
-  die('Connection failed with error'.mysqli_connect_error());
+  $NOTIFICATION="Please give proper input!!!";
+  // die('Connection failed with error'.mysqli_connect_error());
 }
 }
 
@@ -73,6 +75,9 @@ else{
           > 
           <p>Don't give duplicate values</p>
       </div>-->
+      <?php
+          echo $NOTIFICATION;
+      ?>
       <div class='mb-3'>
         <label for='CUST_ID' class='form-label'>CUST_ID</label>
         <input type='text' class='form-control' id='CUST_ID' name='CUST_ID' placeholder='Enter the Customer ID'
