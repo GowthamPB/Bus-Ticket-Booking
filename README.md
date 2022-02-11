@@ -1,5 +1,5 @@
 <h1>Bus-Ticket-Booking Project<h1>
-
+<img src="https://github.com/GowthamPB/Bus-Ticket-Booking/blob/main/Dash-board.png">
 <h2>Why?</h2> 
 <p>Buses are the most frequently available and the most used vehicle for small distance trips
 as well as very long distance trips. While its easy for the customer to take a bus and
