@@ -17,7 +17,7 @@ The project uses:
     <li>MySQL</li>
   </ul>
   <h2>What next?</h2>
-<p style="text-align:justify;">In the future I hope to add a login page so that I can allow multiple users to interact with this website and also a payment gateway so that maintaining transaction details becomes much easier for the business.</p>
+<p style="text-align:justify;">In the future I hope to add a login page so that I can allow multiple users to interact with this website and also a payment gateway so that maintaining transaction details becomes much easier for the travel agencies.</p>
 
 <h2>Have suggestions to improve the project?</h2>
   Then hit me up on <a href="https://twitter.com/Gowtham_PB">twitter</a> :)
