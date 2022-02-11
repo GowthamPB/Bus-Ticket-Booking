@@ -14,3 +14,14 @@ body {
 a:link{
 	text-decoration: none;
 }
+select{
+	width: 1300px;
+    height: 35px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+	margin-bottom: 10px;
+}
+.table1{
+	margin-top: 100px;
+}

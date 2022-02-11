@@ -25,44 +25,56 @@ include 'connect.php';
         <a class="nav-link" aria-current="page" href="display.php">Bus</a>
         <a class="nav-link" href="emp_display.php">Employee</a>
         <a class="nav-link" href="routes_display.php">Routes</a>
-        <a class="nav-link active" href="cust_display.php">Customers</a>
-        <a class="nav-link" href="ticket_display.php">Ticket</a>
+        <a class="nav-link" href="cust_display.php">Customers</a>
+        <a class="nav-link active" href="ticket_display.php">Ticket</a>
       </div>
     </div>
   </div>
 </nav>
 
     <div class="container">
-    <button class='btn btn-primary my-5'><a href="cust_insert.php" class="text-light">Add Customer</a></button>
+    <button class='btn btn-primary my-5'><a href="ticket_insert.php" class="text-light">Book Ticket</a></button>
     <table class="table table-dark table-striped">
   <thead>
     <tr>
+    <th scope="col">TICKET ID</th>
+    <th scope="col">BUS ID</th>
     <th scope="col">CUSTOMER ID</th>
-      <th scope="col">CUSTOMER NAME</th>
-      <th scope="col">PHONE</th>
-      <th scope="col">BUS ID</th>
+      <th scope="col">SOURCE</th>
+      <th scope="col">DESTINATION</th>
+      <th scope="col">TOTAL AMOUNT</th>
+      <th scope="col">DATE AND TIME</th>
       <th scope="col">OPERATIONS</th>
     </tr>
   </thead>
   <tbody>
 <?php
 
-$sql="Select * from `customer`";
+$sql="Select * from `ticket`";
 $result=mysqli_query($con,$sql);
 if($result){
     while($row=mysqli_fetch_assoc($result)){
-        $CUST_ID=$row['CUST_ID'];
-        $CUST_NAME=$row['CUST_NAME'];
-        $PHONE=$row['PHONE'];
+        $TICKET_ID=$row['TICKET_ID'];
         $BUS_ID=$row['BUS_ID'];
+        $CUST_ID=$row['CUSTOMER_ID'];
+        $SOURCE=$row['SOURCE'];
+        $DESTINATION=$row['DESTINATION'];
+        $DATE=$row['DATE_TIME'];
+        $PRICE=$row['PRICE'];
+        $NUM_OF_PASSENGERS=$row['NUM_OF_PASSENGERS'];
         echo '<tr>
-        <th scope="row">'.$CUST_ID.'</th>
-        <td>'.$CUST_NAME.'</td>
-        <td>'.$PHONE.'</td>
+        <th scope="row">'.$TICKET_ID.'</th>
         <td>'.$BUS_ID.'</td>
+        <td>'.$CUST_ID.'</td>
+        <td>'.$SOURCE.'</td>
+        <td>'.$DESTINATION.'</td>
+        <td>'.($PRICE*$NUM_OF_PASSENGERS).'</td>
+        <td>'.$DATE.'</td>
         <td>
-            <button class="btn btn-primary"><a href="cust_update.php?updateid='.$CUST_ID.'" class="text-light">Update</a></button>
-            <button class="btn btn-danger"><a href="cust_delete.php?deleteid='.$CUST_ID.'" class="text-light">Delete</a></button>
+            <button class="btn btn-primary"><a href="ticket_update.php?updateid='.$TICKET_ID.'" class="text-light">Update</a></button>
+            <button class="btn btn-danger"><a href="ticket_delete.php?deleteid='.$TICKET_ID.'&busid='.$BUS_ID.'" class="text-light">Delete</a></button>
+            <button class="btn btn-success"><a  href="bill.php?billid='.$TICKET_ID.'" class="text-light">Generate Ticket</a></button>
+        
         </td>
       </tr>';
     }
@@ -75,3 +87,6 @@ if($result){
 </div>
 </body>
 </html>
+
+<!-- <button class="btn btn-primary"><a href="sms.php?smsid='.$TICKET_ID.'" class="text-light">Send SMS</a></button> -->
+

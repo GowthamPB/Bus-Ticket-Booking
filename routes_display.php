@@ -16,7 +16,7 @@ include 'connect.php';
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1642070562~hmac=bb849ef41d1064bf7c99b53f2c09f8c5" width="35px">Bus Ticket Booking</strong></a>
+    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1643485325~hmac=761a3a37424b1bb74ee71f64a4e63f98" width="35px">Bus Ticket Booking</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -26,7 +26,7 @@ include 'connect.php';
         <a class="nav-link" href="emp_display.php">Employee</a>
         <a class="nav-link active" href="routes_display.php">Routes</a>
         <a class="nav-link" href="cust_display.php">Customers</a>
-        <a class="nav-link" href="pay_display.php">Payment</a>
+        <a class="nav-link" href="ticket_display.php">Ticket</a>
       </div>
     </div>
   </div>
@@ -43,6 +43,7 @@ include 'connect.php';
       <th scope="col">SOURCE</th>
       <th scope="col">DESTINATION</th>
       <th scope="col">PRICE</th>
+      <th scope="col">NUMBER OF SEATS LEFT</th>
       <th scope="col">TIMINGS</th>
       <th scope="col">OPERATIONS</th>
     </tr>
@@ -59,6 +60,7 @@ if($result){
         $SOURCE=$row['SOURCE'];
         $DESTINATION=$row['DESTINATION'];
         $PRICE=$row['PRICE'];
+        $SEATS_LEFT=$row['SEATS_LEFT'];
         $TIMINGS=$row['TIMINGS'];
         echo '<tr>
         <th scope="row">'.$ROUTE_ID.'</th>
@@ -66,6 +68,7 @@ if($result){
         <td>'.$SOURCE.'</td>
         <td>'.$DESTINATION.'</td>
         <td>'.$PRICE.'</td>
+        <td>'.$SEATS_LEFT.'</td>
         <td>'.$TIMINGS.'</td>
         <td>
             <button class="btn btn-primary"><a href="routes_update.php?updateid='.$ROUTE_ID.'" class="text-light">Update</a></button>

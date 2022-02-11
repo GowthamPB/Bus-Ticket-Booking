@@ -11,6 +11,7 @@ $BUS_ID=$row['BUS_ID'];
 $SOURCE=$row['SOURCE'];
 $DESTINATION=$row['DESTINATION'];
 $PRICE=$row['PRICE'];
+$SEATS_LEFT=$row['SEATS_LEFT'];
 $TIMINGS=$row['TIMINGS'];
 
 if(isset($_POST['submit'])){
@@ -18,12 +19,17 @@ if(isset($_POST['submit'])){
   $SOURCE=$_POST['SOURCE'];
   $DESTINATION=$_POST['DESTINATION'];
   $PRICE=$_POST['PRICE'];
+  $SEATS_LEFT=$_POST['SEATS_LEFT'];
   $TIMINGS=$_POST['TIMINGS'];
   if(strtolower($SOURCE)==strtolower($DESTINATION)){
     $NOTIFICATION="<p>Enter different source and destination</p>";
     }
     else{
-$sql="UPDATE `routes` SET `ROUTE_ID`='$ROUTE_ID',`BUS_ID`='$BUS_ID',`SOURCE`='$SOURCE',`DESTINATION`='$DESTINATION',`PRICE`='$PRICE',`TIMINGS`='$TIMINGS' WHERE `routes`.`ROUTE_ID`='$ID'";
+      if($PRICE<=0){
+        $NOTIFICATION="<p>Price should be positive</p>";
+        }
+        else{
+$sql="UPDATE `routes` SET `ROUTE_ID`='$ROUTE_ID',`BUS_ID`='$BUS_ID',`SOURCE`='$SOURCE',`DESTINATION`='$DESTINATION',`PRICE`='$PRICE',`SEATS_LEFT`='$SEATS_LEFT',`TIMINGS`='$TIMINGS' WHERE `routes`.`ROUTE_ID`='$ID'";
 
 $result=mysqli_query($con,$sql);
 if($result){
@@ -33,6 +39,7 @@ else{
   $NOTIFICATION1="Bus ID does not exist";
   // die('Connection failed with error'.mysqli_connect_error());
 }
+        }
 }
 }
 ?>
@@ -55,7 +62,7 @@ else{
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1642070562~hmac=bb849ef41d1064bf7c99b53f2c09f8c5" width="35px">Bus Ticket Booking</strong></a>
+    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1643485325~hmac=761a3a37424b1bb74ee71f64a4e63f98" width="35px">Bus Ticket Booking</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,7 +72,7 @@ else{
         <a class="nav-link" href="emp_display.php">Employee</a>
         <a class="nav-link active" href="routes_display.php">Routes</a>
         <a class="nav-link" href="cust_display.php">Customers</a>
-        <a class="nav-link" href="pay_display.php">Payment</a>
+        <a class="nav-link" href="ticket_display.php">Ticket</a>
       </div>
     </div>
   </div>
@@ -81,12 +88,15 @@ else{
           > 
           <p>Don't give duplicate values</p>
       </div>-->
+      <?php
+      echo $NOTIFICATION;
+      ?>
       <div class='mb-3'>
         <label for='BUS_ID' class='form-label'>BUS ID</label>
         <input type='text' class='form-control' id='BUS_ID' name='BUS_ID' placeholder='Enter the bus id'
-          autocomplete='off'value=<?php
+          autocomplete='off' value="<?php
           echo $BUS_ID;
-          ?>
+          ?>"
           >
       </div>
       <?php
@@ -108,14 +118,19 @@ else{
           ?>
           >
       </div>
-      <?php
-      echo $NOTIFICATION;
-      ?>
       <div class='mb-3'>
         <label for='PRICE' class='form-label'>PRICE</label>
         <input type='text' class='form-control' id='PRICE' name='PRICE'
           placeholder='Enter the price' autocomplete='off' value=<?php
           echo $PRICE;
+          ?>
+          >
+      </div>
+      <div class='mb-3'>
+        <label for='SEATS_LEFT' class='form-label'>SEATS LEFT</label>
+        <input type='text' class='form-control' id='SEATS_LEFT' name='SEATS_LEFT'
+          placeholder='Enter the seats left' autocomplete='off' value=<?php
+          echo $SEATS_LEFT;
           ?>
           >
       </div>

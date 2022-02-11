@@ -1,13 +1,10 @@
 body {
 	/* background: linear-gradient(130deg, #ac1a2a, #1f1fb2 41.07%, #bb2dfd 76.05%);  */
-	background-color: #A1D6E2;
+	background-color: #A1D6E2; 
 	color:  black;
 	min-height: 100vh;
 	margin: 0;
 	font-family: 'Poppins', sans-serif;
-}
-p{
-	color: red;
 }
 .title{
 	font-size: 60px;
@@ -64,6 +61,7 @@ p{
 	display: block;
 	margin:20px auto;
 	width:120px;
+	color: #063852;
 }
 
 .card:hover {

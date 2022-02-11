@@ -1,22 +1,26 @@
 <?php
 include 'connect.php';
+$NOTIFICATION=false;
 $ID=$_GET['updateid'];
 $sql="SELECT * FROM `bus` WHERE `BUS_ID`='$ID'";
 $result=mysqli_query($con,$sql);
-$row=mysqli_fetch_assoc($result);
+$row=mysqli_fetch_array($result);
 $BUS_ID=$row['BUS_ID'];
 $BUS_TYPE=$row['BUS_TYPE'];
 $NUM_PLATE=$row['NUM_PLATE'];
 $NUM_OF_SEATS=$row['NUM_OF_SEATS'];
 
 if(isset($_POST['submit'])){
-$BUS_ID=$_POST['BUS_ID'];
+
 $BUS_TYPE=$_POST['BUS_TYPE'];
 $NUM_PLATE=$_POST['NUM_PLATE'];
 $NUM_OF_SEATS=$_POST['NUM_OF_SEATS'];
 
-
-$sql="UPDATE `bus` SET `BUS_ID`='$BUS_ID',`BUS_TYPE`='$BUS_TYPE',`NUM_PLATE`='$NUM_PLATE',`NUM_OF_SEATS`=$NUM_OF_SEATS WHERE `bus`.`BUS_ID`='$ID'";
+if($NUM_OF_SEATS<=0 || $NUM_OF_SEATS>50){
+  $NOTIFICATION="<p>Number of seats should be between 1 and 50</p>";
+  }
+  else{
+$sql="UPDATE `bus` SET `BUS_TYPE`='$BUS_TYPE',`NUM_PLATE`='$NUM_PLATE',`NUM_OF_SEATS`=$NUM_OF_SEATS WHERE `bus`.`BUS_ID`='$ID'";
 
 $result=mysqli_query($con,$sql);
 if($result){
@@ -25,6 +29,7 @@ if($result){
 else{
   die('Connection failed with error'.mysqli_connect_error());
 }
+  }
 }
 
 ?>
@@ -48,7 +53,7 @@ else{
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1642070562~hmac=bb849ef41d1064bf7c99b53f2c09f8c5" width="35px">Bus Ticket Booking</strong></a>
+    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1643485325~hmac=761a3a37424b1bb74ee71f64a4e63f98" width="35px">Bus Ticket Booking</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -76,7 +81,7 @@ else{
       </div> -->
       <div class='mb-3'>
         <label for='BUS_TYPE' class='form-label'>BUS TYPE</label>
-        <input type='text' class='form-control' id='BUS_TYPE' name='BUS_TYPE' placeholder='Enter the Bus TYPE'
+        <input type='text' class='form-control' id='BUS_TYPE' name='BUS_TYPE' placeholder='Enter the Bus type'
           autocomplete='off'value=<?php
           echo $BUS_TYPE;
           ?>
@@ -85,9 +90,9 @@ else{
       <div class='mb-3'>
         <label for='NUM_PLATE' class='form-label'>NUM PLATE</label>
         <input type='text' class='form-control' id='NUM_PLATE' name='NUM_PLATE' placeholder='Enter the number plate'
-          autocomplete='off' value=<?php
-          echo $NUM_PLATE;
-          ?>
+          autocomplete='off' value="<?php
+         echo $NUM_PLATE;
+          ?>"
           >
       </div>
       <div class='mb-3'>
@@ -98,6 +103,9 @@ else{
           ?>
           >
       </div>
+      <?php
+      echo $NOTIFICATION;
+      ?>
       <button type='submit' class='btn btn-primary' name='submit'>Update</button>
     </form>
   </div>

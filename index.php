@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <h1 class="title"><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1642070562~hmac=bb849ef41d1064bf7c99b53f2c09f8c5">BUS TICKET BOOKING</h1>
+    <h1 class="title"><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1643485325~hmac=761a3a37424b1bb74ee71f64a4e63f98">BUS TICKET BOOKING</h1>
     <div class="container" id="ctn_1">
         <div class="card"><a href="display.php">
             <img src="https://cdn-icons.flaticon.com/png/512/5594/premium/5594047.png?token=exp=1642089392~hmac=dfded3dc85ecab7b7b954157e6d1619a" alt="bus image">
@@ -35,10 +35,10 @@
             <h1>CUSTOMER</h1>
             <p>Manage all the customer details</p></a>
         </div>
-        <div class="card"><a href="pay_display.php">
-            <img src="https://cdn-icons-png.flaticon.com/512/6184/6184933.png" alt="payment image">
-            <h1>PAYMENT</h1>
-            <p>Manage all the payment details</p></a>
+        <div class="card"><a href="ticket_display.php">
+            <img src="https://cdn-icons.flaticon.com/png/512/6030/premium/6030249.png?token=exp=1643427392~hmac=2d17e39d4de46f35e430e70a06c8a67d" alt="Ticket image">
+            <h1>TICKET</h1>
+            <p>Manage all the ticket details</p></a>
         </div>
     </div>
 </body>

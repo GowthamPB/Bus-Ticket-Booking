@@ -39,7 +39,7 @@ else{
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1642070562~hmac=bb849ef41d1064bf7c99b53f2c09f8c5" width="35px">Bus Ticket Booking</strong></a>
+    <a class="navbar-brand" href="index.php"><strong><img src="https://cdn-icons.flaticon.com/png/512/3066/premium/3066259.png?token=exp=1643485325~hmac=761a3a37424b1bb74ee71f64a4e63f98" width="35px">Bus Ticket Booking</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,7 +49,7 @@ else{
         <a class="nav-link" href="emp_display.php">Employee</a>
         <a class="nav-link" href="routes_display.php">Routes</a>
         <a class="nav-link active" href="cust_display.php">Customers</a>
-        <a class="nav-link" href="pay_display.php">Payment</a>
+        <a class="nav-link" href="ticket_display.php">Ticket</a>
       </div>
     </div>
   </div>
@@ -65,17 +65,17 @@ else{
       <div class='mb-3'>
         <label for='CUST_NAME' class='form-label'>CUST_NAME</label>
         <input type='text' class='form-control' id='CUST_NAME' name='CUST_NAME' placeholder='Enter the custome name'
-          autocomplete='off'>
+          autocomplete='off' required>
       </div>
       <div class='mb-3'>
         <label for='PHONE' class='form-label'>PHONE</label>
         <input type='text' class='form-control' id='PHONE' name='PHONE' placeholder='Enter the phone number'
-          autocomplete='off'>
+          autocomplete='off' pattern="[6-9]{1}[0-9]{9}" required>
       </div>
       <div class='mb-3'>
         <label for='BUS_ID' class='form-label'>BUS ID</label>
         <input type='text' class='form-control' id='BUS_ID' name='BUS_ID'
-          placeholder='Enter the bus id from bus table' autocomplete='off'>
+          placeholder='Enter the bus id from bus table' autocomplete='off' required>
       </div>
       <?php
           echo "$NOTIFICATION";
